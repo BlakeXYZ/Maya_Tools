@@ -4,7 +4,7 @@ import logging
 import importlib
 from pprint import pprint
 
-import testFetch_jira_lib
+import tests.testFetch_jira_lib as testFetch_jira_lib
 
 
 

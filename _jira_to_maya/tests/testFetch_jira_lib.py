@@ -1,6 +1,6 @@
 from jira import JIRA 
 import json
-from auth import auth_token
+from tests.auth import auth_token
 
 from pprint import pprint
 

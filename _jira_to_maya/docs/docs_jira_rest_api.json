@@ -1,0 +1,75 @@
+
+>>>>>>>>>>>>>>>>>>>>>
+https://medium.com/@metechsolutions/python-by-examples-jira-access-e87771a26dfb
+
+# POST -> Create
+# GET -> Get
+# PUT -> Edit
+# DELETE -> Delete
+
+# Query JIRA Issues by JSQL
+# https://your-jira.domain.company.com/rest/api/3/search
+
+payload = json.dumps( {
+  "expand": [
+    "names",
+    "schema",
+    "operations"
+  ],
+  "fields": [
+    "summary",
+    "status",
+    "assignee"
+  ],
+  "fieldsByKeys": false,
+  "jql": "project = HSP",
+  "maxResults": 15,
+  "startAt": 0
+} )
+
+
+response = requests.request(
+   "POST",
+   "https://your-jira.domain.company.com/rest/api/3/search",
+   data=payload,
+   headers=headers,
+   auth=auth
+)
+
+# Work with JIRA Sprint
+GET /rest/agile/1.0/board/<board_id>/sprint
+GET /rest/agile/1.0/board/<board_id>/sprint?state=active,closed
+GET /rest/agile/1.0/sprint/{sprintId}
+GET /rest/agile/1.0/sprint/{sprintId}/issue
+POST /rest/agile/1.0/sprint
+PUT /rest/agile/1.0/sprint/{sprintId}
+DELETE /rest/agile/1.0/sprint/{sprintId}
+
+# Work with JIRA components
+# https://your-jira.domain.company.com/rest/api/3/project/{projectIdOrKey}/components
+GET /rest/api/3/component/{id}
+POST /rest/api/3/component/{id}
+PUT /rest/api/3/component/{id}
+DELETE /rest/api/3/component/{id}
+
+# Work with JIRA EPic
+GET /rest/agile/1.0/board/{boardId}/epic
+GET /rest/agile/1.0/epic/{epicIdOrKey}
+GET /rest/agile/1.0/epic/none/issue # issues without EPIC
+GET /rest/agile/1.0/epic/{epicIdOrKey}/issue
+POST /rest/agile/1.0/epic/{epicIdOrKey}
+
+# Work with JIRA Issue
+GET /rest/agile/1.0/issue/{issueIdOrKey}
+PUT /rest/agile/1.0/issue/{issueIdOrKey}/estimation
+POST /rest/api/3/issue
+POST /rest/api/3/issue/bulk
+PUT /rest/api/3/issue/{issueIdOrKey}
+PUT /rest/api/3/issue/{issueIdOrKey}/assignee
+DELETE /rest/api/3/issue/{issueIdOrKey}
+GET /rest/api/3/issue/{issueIdOrKey}/changelog
+GET /rest/api/3/issue/{issueIdOrKey}/transitions
+POST /rest/api/3/issue/{issueIdOrKey}/transitions
+
+>>>>>>>>>
+>>>>>>>>>>>>>>>>>>>>>
